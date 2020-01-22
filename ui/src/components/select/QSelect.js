@@ -599,10 +599,15 @@ export default Vue.extend({
 
       e.keyCode !== 9 && stopAndPrevent(e)
 
-      if (this.optionIndex > -1 && this.optionIndex < optionsLength) {
-        this.toggleOption(this.options[this.optionIndex])
-        if (this.useInput) {
-          this.inputValue = ''
+      if (this.optionIndex >= -1 && this.optionIndex < optionsLength) {
+        if (this.optionIndex < 0) {
+          this.optionIndex = 0
+        }
+        if (optionsLength > 0) {
+          this.toggleOption(this.options[this.optionIndex])
+          if (this.useInput) {
+            this.inputValue = ''
+          }
         }
         return
       }
